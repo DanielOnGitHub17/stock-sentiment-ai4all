@@ -4,17 +4,8 @@ import numpy as np
 import joblib
 
 def predict(data):
-    clf = joblib.load("rf_model.sav")
+    clf = joblib.load("stock-sentiment-predict.pkl")
     return clf.predict(data)
-
-# Function to map classes to images
-def class_to_image(class_name):
-    if class_name == "setosa":
-        return "images/setosa.jpg"  # Replace with the actual path to your setosa image
-    elif class_name == "versicolor":
-        return "images/versicolor.jpg"  # Replace with the actual path to your versicolor image
-    elif class_name == "virginica":
-        return "images/virginica.jpg"  # Replace with the actual path to your virginica image
 
 st.title('Classifying Iris Flowers')
 st.markdown('Model to classify iris flowers into \
