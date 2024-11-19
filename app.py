@@ -7,7 +7,7 @@ def predict(data):
     clf = joblib.load("stock-sentiment-predict.pkl")
     return clf.predict(data)
 
-st.title('Classifying Iris Flowers')
+st.title("Market prediction for today")
 st.markdown('Model to classify iris flowers into \
      (setosa, versicolor, virginica) based on their sepal/petal \
     and length/width.')
@@ -27,6 +27,7 @@ with col2:
 
 st.text('')
 if st.button("Predict type of Iris"):
+    # Go to finviz, scrape for input. Feed to model return answer as binary type.
     result = predict(
         np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
     st.text(result[0])
