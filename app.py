@@ -8,9 +8,9 @@ def predict(data):
     return clf.predict(data)
 
 st.title("Market prediction for today")
-st.markdown('Model to classify iris flowers into \
-     (setosa, versicolor, virginica) based on their sepal/petal \
-    and length/width.')
+st.markdown("""
+Model that can provide stock market overview based on top news headlines
+""")
 
 st.header("Plant Features")
 col1, col2 = st.columns(2)
