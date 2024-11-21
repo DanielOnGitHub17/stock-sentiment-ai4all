@@ -10,8 +10,10 @@ from prediction import headlines_to_input, predict
 
 N_HEADLINES = 25
 LINE_BREAK_COUNT = 3
+PREDICTION_TEXTS = ("The market is not doing well today", "The market is doing well today")
 
 def display_heading():
+    """Start page content"""
     st.title("Today's Market Prediction")
     st.markdown("""
 Model that can provide stock market overview based on top news headlines
@@ -21,6 +23,7 @@ Model that can provide stock market overview based on top news headlines
 
 
 def display_headlines():
+    """Display the scraped headlines"""
     count = 0
     headlines = get_headlines(N_HEADLINES)
     columns = st.columns(N_HEADLINES)
@@ -35,13 +38,13 @@ def display_headlines():
     return headlines
 
 def display_prediction_button(headlines):
+    """Event handler for prediction button"""
     if st.button("Generate stock overview"):
         # Get Vectorized input
         data = headlines_to_input(headlines)
-        result = predict(data)
-        # Display the result only, for now
-        st.text(str(result))
-
+        result = predict(data)  # 0/1
+        # Display the result text
+        st.text(PREDICTION_TEXTS[result])
 
 display_heading()
 st.text("")
