@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 # Load the model - for Python to cache it.
-STOCK_SENTIMENT_PREDICTOR = joblib.load("stock-sentiment-predict.pkl")
+STOCK_SENTIMENT_PREDICTOR = joblib.load("stock-sentiment-predict.joblib")
 
 def predict(vectorized_headlines):
     """Function to predict using model"""
