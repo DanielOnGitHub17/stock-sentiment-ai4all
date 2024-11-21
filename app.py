@@ -10,7 +10,7 @@ from prediction import predict
 
 N_HEADLINES = 25
 LINE_BREAK_COUNT = 3
-st.title("Market prediction for today")
+st.title("Today's Market Prediction")
 st.markdown("""
 Model that can provide stock market overview based on top news headlines
 """)
