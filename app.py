@@ -3,30 +3,25 @@ import pandas as pd
 import numpy as np
 import joblib
 
-def predict(data):
-    clf = joblib.load("stock-sentiment-predict.pkl")
-    return clf.predict(data)
+from scraping import get_headlines
+from prediction import predict
+
+N_HEADLINES = 25
 
 st.title("Market prediction for today")
 st.markdown("""
 Model that can provide stock market overview based on top news headlines
 """)
 
-st.header("Plant Features")
-col1, col2 = st.columns(2)
-
-with col1:
-    st.text("Sepal characteristics")
-    sepal_l = st.slider('Sepal length (cm)', 1.0, 8.0, 0.5)
-    sepal_w = st.slider('Sepal width (cm)', 2.0, 4.4, 0.5)
-
-with col2:
-    st.text("Petal characteristics")
-    petal_l = st.slider('Petal length (cm)', 1.0, 7.0, 0.5)
-    petal_w = st.slider('Petal width (cm)', 0.1, 2.5, 0.5)
+st.header("News Headlines for today")
+headlines = get_headlines(N_HEADLINES)
+columns = st.columns(N_HEADLINES)
+for col, headline in zip(columns, headlines):
+    with col:
+        st.text(headline)
 
 st.text('')
-if st.button("Predict type of Iris"):
+if st.button("Generate stock overview"):
     # Go to finviz, scrape for input. Feed to model return answer as binary type.
     result = predict(
         np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
