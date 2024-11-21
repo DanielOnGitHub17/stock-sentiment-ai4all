@@ -6,7 +6,7 @@ import numpy as np
 import joblib
 
 from scraping import get_headlines
-from prediction import predict
+from prediction import headlines_to_input, predict
 
 N_HEADLINES = 25
 LINE_BREAK_COUNT = 3
@@ -36,14 +36,11 @@ def display_headlines():
 
 def display_prediction_button(headlines):
     if st.button("Generate stock overview"):
-        # Go to finviz, scrape for input. Feed to model return answer as binary type.
-        result = predict(
-            np.array([[sepal_l, sepal_w, petal_l, petal_w]]))
-        st.text(result[0])
-
-        # Display the image/icon corresponding to the predicted class
-        image_path = class_to_image(result[0].split("-")[1])
-        st.image(image_path, use_column_width=True)
+        # Get Vectorized input
+        data = headlines_to_input(headlines)
+        result = predict(data)
+        # Display the result only, for now
+        st.text(str(result))
 
 
 display_heading()
