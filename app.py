@@ -28,10 +28,10 @@ def display_headlines():
     while headlines_display:
         columns = st.columns(2)
         for col in columns:
-            with col:
-                st.text(headlines.pop())
             if not headlines_display:
                 return headlines
+            with col:
+                st.text(headlines.pop())
     return headlines
 
 def display_prediction_button(headlines):
