@@ -15,9 +15,10 @@ def predict(vectorized_headlines):
     """Function to predict using model"""
     stock_model = STOCK_SENTIMENT_PREDICTOR
     prediction = stock_model.predict(vectorized_headlines)
-    return prediction
+    return prediction[0]
 
 def headlines_to_input(headlines):
+    """Uses count vectorizer to vectorize array headlines"""
     # Make count vectorizer
     countvector = COUNT_VECTORIZER
     # Combine headlines, make lower case, remove anything that's not text
