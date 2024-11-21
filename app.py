@@ -31,7 +31,7 @@ def display_headlines():
             if not headlines_display:
                 return headlines
             with col:
-                st.text(headlines.pop())
+                st.text(headlines_display.pop())
     return headlines
 
 def display_prediction_button(headlines):
