@@ -34,7 +34,7 @@ def display_headlines():
                 return headlines
     return headlines
 
-display_prediction_button(headlines):
+def display_prediction_button(headlines):
     if st.button("Generate stock overview"):
         # Go to finviz, scrape for input. Feed to model return answer as binary type.
         result = predict(
