@@ -1,4 +1,5 @@
 """Module to predict stock from data"""
+import joblib
 
 def predict(data):
     clf = joblib.load("stock-sentiment-predict.pkl")
