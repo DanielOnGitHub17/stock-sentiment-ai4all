@@ -14,9 +14,9 @@ PREDICTION_TEXTS = ("The market is not doing well today", "The market is doing w
 
 def display_heading():
     """Start page content"""
-    st.title("Today's Market Prediction")
+    st.title("Market sentiment for today")
     st.markdown("""
-Model that can provide stock market overview based on top news headlines
+Model that can provide stock market sentiment based on top news headlines
 """)
 
     st.header("News Headlines for today")
@@ -45,6 +45,10 @@ def display_prediction_button(headlines):
         result = predict(data)  # 0/1
         # Display the result text
         st.text(PREDICTION_TEXTS[result])
+
+
+# Set the page title
+st.set_page_config(page_title="Stock market sentiment")
 
 display_heading()
 st.text("")
